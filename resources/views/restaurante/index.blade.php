@@ -1,11 +1,17 @@
+@extends('layouts.app')
+
+@section('content')
+
 @if(Session::has('Mensaje')){{
    Session::get('Mensaje') 
 }}
 @endif
 
-<a href="{{ url('restaurante/crear') }}">
+<a href="{{ url('restaurante/crear') }}" class="btn btn-success">
   Agregar restaurante
 </a>
+
+
 <table class="table">
   <thead>
     <tr>
@@ -25,17 +31,18 @@
       <td>{{$rest->Descripcion}}</td>
       <td>{{$rest->Direccion}}</td>
       <td>{{$rest->Ciudad}}</td>
-      <td><img src="{{ asset('storage').'/'.$rest->url}}" width="200px">  </td>
+      <td><img src="{{ asset('storage').'/'.$rest->url}}" width="200px" class="img-thumbnail img-fluid">  </td>
       <td>
 
-      <a href="{{ url('/restaurante/'.$rest->id.'/edit') }}">
+      <a href="{{ url('/restaurante/'.$rest->id.'/edit') }}" class="btn btn-warning">
       	Editar
       </a>
-      	<form method="post" action="{{ url('/restaurante/'.$rest->id) }}">
+
+      	<form method="post" action="{{ url('/restaurante/'.$rest->id) }}" style="display:inline">
       		{{csrf_field()}}
       		{{method_field('DELETE')}}
 
-      		<button type="submit" onclick="return confirm('¿Borrar?');" >
+      		<button type="submit" onclick="return confirm('¿Borrar?');" class="btn btn-danger">
       			Borrar
       		</button>
       	</form>
@@ -45,3 +52,6 @@
     @endforeach
   </tbody>
 </table>
+
+</div>
+@endsection
