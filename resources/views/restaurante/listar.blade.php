@@ -7,12 +7,7 @@
 }}
 @endif
 
-<a href="{{ url('restaurante/crear') }}" class="btn btn-success">
-  Agregar restaurante
-</a>
-
-
-<table class="table">
+<table class="table" id="myTable">
   <thead>
     <tr>
       <th scope="col">Item</th>
@@ -55,4 +50,5 @@
 </table>
 
 </div>
+
 @endsection

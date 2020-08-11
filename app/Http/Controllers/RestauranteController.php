@@ -49,7 +49,7 @@ class RestauranteController extends Controller
 
         Restaurante::insert($datosRestaurante);
 
-        return redirect('restaurante')->with('Mensaje','Empleado agregado con exito');
+        return redirect('restaurante')->with('Mensaje','Restaurante agregado con exito');
         //return response()->json($datosRestaurante);
     }
 
@@ -62,6 +62,9 @@ class RestauranteController extends Controller
     public function show(Restaurante $restaurante)
     {
         //
+        $datos['restaurante']=Restaurante::paginate(5);
+
+        return view('restaurante.listar',$datos);        
     }
 
     /**
